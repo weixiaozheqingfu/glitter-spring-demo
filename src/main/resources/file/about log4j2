@@ -336,6 +336,13 @@ Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文�
     <version>2.10.0</version>
 </dependency>
 
+<!-- 桥接：告诉commons-logging使用Log4j2,这个jar包我没加，加上的话应该有利于spring日志打印，因为spring依赖的日志包是common-logging包 -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-jcl</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
 
 七.使用slf4j来作为项目中打印日志时，调用日志框架的入口。
 <dependency>
@@ -466,4 +473,7 @@ Caused by: java.lang.ClassNotFoundException: com.lmax.disruptor.EventFactory
  %l 输出语句所在的行数, 包括类名、方法名、文件名、行数
  %p 显示该条日志的优先级,如INFO,ERROR等
  %c 列出logger名字空间的全称，如果加上{<层数>}表示列出从最内层算起的指定层数的名字空间，假设当前logger名字空间是"a.b.c"，则输出a.b.c
+
+
+
 
