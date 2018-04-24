@@ -104,6 +104,129 @@ ERROR StatusLogger No log4j2 configuration file found. Using default configurati
 
 3.如果使用tomcat7.0.43及以下版本会输出如上一个错误信息，虽然并不影响项目正常启动。所以我们最好使用tomcat8及以上版本。
 
+4.如果在此基础上，只要在resources目录下放置log4j2.xml配置文件,并且设定日志级别为DEBUG,即可得到如下打印日志，由于级别较低，log4j2的加载日志也会一并打印出来。如果设置级别为TRACE，则打印信息会更详细。
+
+E:\my_tomcat\apache-tomcat-8.5.29\bin\catalina.bat run
+[2018-04-24 03:35:34,490] Artifact glitter-spring-demo:war exploded: Server is not connected. Deploy is not available.
+Using CATALINA_BASE:   "C:\Users\Administrator\.IntelliJIdea2016.3\system\tomcat\Unnamed_glitter-spring-demo"
+Using CATALINA_HOME:   "E:\my_tomcat\apache-tomcat-8.5.29"
+Using CATALINA_TMPDIR: "E:\my_tomcat\apache-tomcat-8.5.29\temp"
+Using JRE_HOME:        "E:\Java\jdk\jdk1.8.0_151"
+Using CLASSPATH:       "E:\my_tomcat\apache-tomcat-8.5.29\bin\bootstrap.jar;E:\my_tomcat\apache-tomcat-8.5.29\bin\tomcat-juli.jar"
+Connected to the target VM, address: '127.0.0.1:50328', transport: 'socket'
+24-Apr-2018 15:35:35.300 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.29
+24-Apr-2018 15:35:35.302 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Mar 5 2018 13:11:12 UTC
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.29.0
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 7
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            6.1
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             E:\Java\jdk\jdk1.8.0_151\jre
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_151-b12
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\Administrator\.IntelliJIdea2016.3\system\tomcat\Unnamed_glitter-spring-demo
+24-Apr-2018 15:35:35.303 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         E:\my_tomcat\apache-tomcat-8.5.29
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\Administrator\.IntelliJIdea2016.3\system\tomcat\Unnamed_glitter-spring-demo\conf\logging.properties
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:50328,suspend=y,server=n
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote=
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.port=1099
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.ssl=false
+24-Apr-2018 15:35:35.304 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcom.sun.management.jmxremote.authenticate=false
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.rmi.server.hostname=127.0.0.1
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\Administrator\.IntelliJIdea2016.3\system\tomcat\Unnamed_glitter-spring-demo
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=E:\my_tomcat\apache-tomcat-8.5.29
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=E:\my_tomcat\apache-tomcat-8.5.29\temp
+24-Apr-2018 15:35:35.305 信息 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [E:\Java\jdk\jdk1.8.0_151\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;E:\Java\apache-maven-3.3.3\bin;C:\Program Files (x86)\Common Files\NetSarang;E:\Java\zookeeper-3.4.6\bin;E:\Java\jdk\jdk1.8.0_151\bin;D:\app\Administrator\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;E:\svn\Subversion\bin;D:\Program Files\TortoiseSVN\bin;E:\svn\Subversion\bin;D:\Program Files\Git\bin;D:\Program Files\TortoiseGit\bin;E:\Java\apache-jmeter-3.3\bin;d:\Program Files\OpenVPN\bin;D:\Program Files (x86)\MySQL\MySQL Server 5.0\bin;E:\Java\nginx-1.13.8;D:\Program File\Fiddler;.]
+24-Apr-2018 15:35:35.394 信息 [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+24-Apr-2018 15:35:35.407 信息 [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-Apr-2018 15:35:35.413 信息 [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+24-Apr-2018 15:35:35.414 信息 [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+24-Apr-2018 15:35:35.415 信息 [main] org.apache.catalina.startup.Catalina.load Initialization processed in 377 ms
+24-Apr-2018 15:35:35.440 信息 [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+24-Apr-2018 15:35:35.440 信息 [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.29
+24-Apr-2018 15:35:35.449 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+24-Apr-2018 15:35:35.459 信息 [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+24-Apr-2018 15:35:35.462 信息 [main] org.apache.catalina.startup.Catalina.start Server startup in 47 ms
+Connected to server
+[2018-04-24 03:35:35,563] Artifact glitter-spring-demo:war exploded: Artifact is being deployed, please wait...
+24-Apr-2018 15:35:36.611 信息 [RMI TCP Connection(3)-127.0.0.1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-04-24 15:35:39,017 RMI TCP Connection(3)-127.0.0.1 DEBUG Starting LoggerContext[name=${projectName}] from configuration at null
+2018-04-24 15:35:39,020 RMI TCP Connection(3)-127.0.0.1 DEBUG Starting LoggerContext[name=${projectName}, org.apache.logging.log4j.core.LoggerContext@77270877] with configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml]...
+2018-04-24 15:35:39,021 RMI TCP Connection(3)-127.0.0.1 DEBUG Shutdown hook enabled. Registering a new one.
+2018-04-24 15:35:39,119 RMI TCP Connection(3)-127.0.0.1 DEBUG Initializing configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml]
+2018-04-24 15:35:39,192 RMI TCP Connection(3)-127.0.0.1 DEBUG Installed 1 script engine
+2018-04-24 15:35:39,444 RMI TCP Connection(3)-127.0.0.1 DEBUG Oracle Nashorn version: 1.8.0_151, language: ECMAScript, threading: Not Thread Safe, compile: true, names: [nashorn, Nashorn, js, JS, JavaScript, javascript, ECMAScript, ecmascript], factory class: jdk.nashorn.api.scripting.NashornScriptEngineFactory
+2018-04-24 15:35:39,445 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'Core' found 117 plugins
+2018-04-24 15:35:39,445 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'Level' found 0 plugins
+2018-04-24 15:35:39,448 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'Lookup' found 14 plugins
+2018-04-24 15:35:39,450 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=layout, class=org.apache.logging.log4j.core.layout.PatternLayout].
+2018-04-24 15:35:39,460 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'TypeConverter' found 26 plugins
+2018-04-24 15:35:39,470 RMI TCP Connection(3)-127.0.0.1 DEBUG PatternLayout$Builder(pattern="[spring-demo] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n", PatternSelector=null, Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml), Replace=null, charset="null", alwaysWriteExceptions="null", disableAnsi="null", noConsoleNoAnsi="null", header="null", footer="null")
+2018-04-24 15:35:39,471 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'Converter' found 42 plugins
+2018-04-24 15:35:39,486 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=appender, class=org.apache.logging.log4j.core.appender.ConsoleAppender].
+2018-04-24 15:35:39,495 RMI TCP Connection(3)-127.0.0.1 DEBUG ConsoleAppender$Builder(target="SYSTEM_OUT", follow="null", direct="null", bufferedIo="null", bufferSize="null", immediateFlush="null", ignoreExceptions="null", PatternLayout([spring-demo] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n), name="Console", Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml), Filter=null)
+2018-04-24 15:35:39,497 RMI TCP Connection(3)-127.0.0.1 DEBUG Starting OutputStreamManager SYSTEM_OUT.false.false
+2018-04-24 15:35:39,497 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=layout, class=org.apache.logging.log4j.core.layout.PatternLayout].
+2018-04-24 15:35:39,498 RMI TCP Connection(3)-127.0.0.1 DEBUG PatternLayout$Builder(pattern="[spring-demo] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n", PatternSelector=null, Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml), Replace=null, charset="null", alwaysWriteExceptions="null", disableAnsi="null", noConsoleNoAnsi="null", header="null", footer="null")
+2018-04-24 15:35:39,499 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=SizeBasedTriggeringPolicy, class=org.apache.logging.log4j.core.appender.rolling.SizeBasedTriggeringPolicy].
+2018-04-24 15:35:39,507 RMI TCP Connection(3)-127.0.0.1 DEBUG createPolicy(size="50MB")
+2018-04-24 15:35:39,509 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=Policies, class=org.apache.logging.log4j.core.appender.rolling.CompositeTriggeringPolicy].
+2018-04-24 15:35:39,510 RMI TCP Connection(3)-127.0.0.1 DEBUG createPolicy(={SizeBasedTriggeringPolicy(size=52428800)})
+2018-04-24 15:35:39,510 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=DefaultRolloverStrategy, class=org.apache.logging.log4j.core.appender.rolling.DefaultRolloverStrategy].
+2018-04-24 15:35:39,515 RMI TCP Connection(3)-127.0.0.1 DEBUG DefaultRolloverStrategy$Builder(max="20", min="null", fileIndex="null", compressionLevel="null", ={}, stopCustomActionsOnError="null", tempCompressedFilePattern="null", Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml))
+2018-04-24 15:35:39,516 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=appender, class=org.apache.logging.log4j.core.appender.RollingFileAppender].
+2018-04-24 15:35:39,519 RMI TCP Connection(3)-127.0.0.1 DEBUG RollingFileAppender$Builder(fileName="/home/logs/spring-demo.log", filePattern="/home/logs/spring-demo.log.%i", append="null", locking="null", Policies(CompositeTriggeringPolicy(policies=[SizeBasedTriggeringPolicy(size=52428800)])), DefaultRolloverStrategy(DefaultRolloverStrategy(min=1, max=20, useMax=true)), advertise="null", advertiseUri="null", createOnDemand="null", filePermissions="null", fileOwner="null", fileGroup="null", bufferedIo="null", bufferSize="null", immediateFlush="null", ignoreExceptions="null", PatternLayout([spring-demo] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n), name="RollingFile", Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml), Filter=null)
+2018-04-24 15:35:39,526 RMI TCP Connection(3)-127.0.0.1 DEBUG Starting RollingFileManager /home/logs/spring-demo.log
+2018-04-24 15:35:39,528 RMI TCP Connection(3)-127.0.0.1 DEBUG PluginManager 'FileConverter' found 2 plugins
+2018-04-24 15:35:39,529 RMI TCP Connection(3)-127.0.0.1 DEBUG Setting prev file time to 2018-04-24T14:57:27.068+0800
+2018-04-24 15:35:39,532 RMI TCP Connection(3)-127.0.0.1 DEBUG Initializing triggering policy CompositeTriggeringPolicy(policies=[SizeBasedTriggeringPolicy(size=52428800)])
+2018-04-24 15:35:39,532 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=appenders, class=org.apache.logging.log4j.core.config.AppendersPlugin].
+2018-04-24 15:35:39,532 RMI TCP Connection(3)-127.0.0.1 DEBUG createAppenders(={Console, RollingFile})
+2018-04-24 15:35:39,533 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=appender-ref, class=org.apache.logging.log4j.core.config.AppenderRef].
+2018-04-24 15:35:39,533 RMI TCP Connection(3)-127.0.0.1 DEBUG createAppenderRef(ref="Console", level="null", Filter=null)
+2018-04-24 15:35:39,533 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=appender-ref, class=org.apache.logging.log4j.core.config.AppenderRef].
+2018-04-24 15:35:39,534 RMI TCP Connection(3)-127.0.0.1 DEBUG createAppenderRef(ref="RollingFile", level="null", Filter=null)
+2018-04-24 15:35:39,534 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=root, class=org.apache.logging.log4j.core.config.LoggerConfig$RootLogger].
+2018-04-24 15:35:39,535 RMI TCP Connection(3)-127.0.0.1 DEBUG createLogger(additivity="null", level="DEBUG", includeLocation="null", ={Console, RollingFile}, ={}, Configuration(E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml), Filter=null)
+2018-04-24 15:35:39,537 RMI TCP Connection(3)-127.0.0.1 DEBUG Building Plugin[name=loggers, class=org.apache.logging.log4j.core.config.LoggersPlugin].
+2018-04-24 15:35:39,538 RMI TCP Connection(3)-127.0.0.1 DEBUG createLoggers(={root})
+2018-04-24 15:35:39,539 RMI TCP Connection(3)-127.0.0.1 DEBUG Configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml] initialized
+2018-04-24 15:35:39,539 RMI TCP Connection(3)-127.0.0.1 DEBUG Starting configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml]
+2018-04-24 15:35:39,540 RMI TCP Connection(3)-127.0.0.1 DEBUG Started configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml] OK.
+2018-04-24 15:35:39,540 RMI TCP Connection(3)-127.0.0.1 DEBUG Shutting down OutputStreamManager SYSTEM_OUT.false.false-1
+2018-04-24 15:35:39,541 RMI TCP Connection(3)-127.0.0.1 DEBUG Shut down OutputStreamManager SYSTEM_OUT.false.false-1, all resources released: true
+2018-04-24 15:35:39,541 RMI TCP Connection(3)-127.0.0.1 DEBUG Appender DefaultConsole-1 stopped with status true
+2018-04-24 15:35:39,541 RMI TCP Connection(3)-127.0.0.1 DEBUG Stopped org.apache.logging.log4j.core.config.DefaultConfiguration@12cd5d08 OK
+2018-04-24 15:35:39,545 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName}
+2018-04-24 15:35:39,547 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName},component=StatusLogger
+2018-04-24 15:35:39,549 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName},component=ContextSelector
+2018-04-24 15:35:39,550 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName},component=Loggers,name=
+2018-04-24 15:35:39,551 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName},component=Appenders,name=Console
+2018-04-24 15:35:39,552 RMI TCP Connection(3)-127.0.0.1 DEBUG Registering MBean org.apache.logging.log4j2:type=${projectName},component=Appenders,name=RollingFile
+2018-04-24 15:35:39,554 RMI TCP Connection(3)-127.0.0.1 DEBUG LoggerContext[name=${projectName}, org.apache.logging.log4j.core.LoggerContext@77270877] started OK with configuration XmlConfiguration[location=E:\workspaces-idea\GITHUB\glitter-spring-demo\target\spring-demo\WEB-INF\classes\log4j2.xml].
+${projectName}
+[spring-demo] [2018-04-24 15:35:39.758] [RMI TCP Connection(3)-127.0.0.1] DEBUG => com.glitter.demo.listener.DemoListener - ===========================debug================================
+2018-04-24 15:35:39,763 RMI TCP Connection(3)-127.0.0.1 DEBUG AsyncLogger.ThreadNameStrategy=UNCACHED (user specified null, default is UNCACHED)
+[spring-demo] [2018-04-24 15:35:39.764] [RMI TCP Connection(3)-127.0.0.1] INFO  => com.glitter.demo.listener.DemoListener - ===========================info================================
+[spring-demo] [2018-04-24 15:35:39.764] [RMI TCP Connection(3)-127.0.0.1] WARN  => com.glitter.demo.listener.DemoListener - ===========================warn================================
+[spring-demo] [2018-04-24 15:35:39.764] [RMI TCP Connection(3)-127.0.0.1] ERROR => com.glitter.demo.listener.DemoListener - ===========================error================================
+[spring-demo] [2018-04-24 15:35:39.764] [RMI TCP Connection(3)-127.0.0.1] FATAL => com.glitter.demo.listener.DemoListener - ===========================fatal================================
+24-Apr-2018 15:35:39.765 信息 [RMI TCP Connection(3)-127.0.0.1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+24-Apr-2018 15:35:39.808 信息 [RMI TCP Connection(3)-127.0.0.1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Tue Apr 24 15:35:39 CST 2018]; root of context hierarchy
+24-Apr-2018 15:35:39.849 信息 [RMI TCP Connection(3)-127.0.0.1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from class path resource [applicationContext.xml]
+24-Apr-2018 15:35:39.957 信息 [RMI TCP Connection(3)-127.0.0.1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 191 ms
+2018-04-24 15:35:40,034 RMI TCP Connection(3)-127.0.0.1 DEBUG Log4jServletContextListener ensuring that Log4j starts up properly.
+2018-04-24 15:35:40,039 RMI TCP Connection(3)-127.0.0.1 DEBUG Log4jServletFilter initialized.
+[2018-04-24 03:35:40,062] Artifact glitter-spring-demo:war exploded: Artifact is deployed successfully
+[2018-04-24 03:35:40,062] Artifact glitter-spring-demo:war exploded: Deploy took 4,499 milliseconds
+24-Apr-2018 15:35:45.456 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [E:\my_tomcat\apache-tomcat-8.5.29\webapps\manager]
+24-Apr-2018 15:35:45.578 信息 [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+24-Apr-2018 15:35:45.585 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [E:\my_tomcat\apache-tomcat-8.5.29\webapps\manager] has finished in [128] ms
+
+
 
 =================================================================================分割线======================================================================================
 
