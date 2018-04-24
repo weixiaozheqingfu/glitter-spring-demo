@@ -335,3 +335,34 @@ Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文�
     <artifactId>log4j-slf4j-impl</artifactId>
     <version>2.10.0</version>
 </dependency>
+
+
+七.使用slf4j来作为项目中打印日志时，调用日志框架的入口。
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-slf4j-impl</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+logger.debug("===========================debug================================");
+logger.info("===========================info================================");
+logger.warn("===========================warn================================");
+logger.error("===========================error================================");
+
+如上，引入slf4j相关的两个jar包,其中slf4j-api是slf4j的api的jar包，log4j-slf4j-impl是log4j2的项目组针对slf4j的api开发的实现，
+通过如果项目中是使用slf4j来打印日志的，则即为调用log4j-slf4j-impl包中的对应实现方法，而该包中的实现方法会进一步调用log4j-api和log4j-core包的方法，最终使用log4j2的实现来做日志打印。
+
+项目中使用slf4j打印日志与log4j的加载过程无关,只是调用方式变了而已，不是直接调用log4j-api,而是调用slf4j-api，进一步调用log4j2的实现。
+此过程中如果不引入log4j-slf4j-impl包，不影响log4j2的加载，但是项目中使用slf4j打印日志的地方会没有日志输出，想想都知道，是因为没有实现类嘛。虽然实现类就在那，一切都准备好了，但是你就是不调，那可没辙。
+
+
