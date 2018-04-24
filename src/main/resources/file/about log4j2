@@ -321,7 +321,7 @@ Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文�
 <dependency>
     <groupId>com.lmax</groupId>
     <artifactId>disruptor</artifactId>
-    <version>3.2.0</version>
+    <version>3.3.11</version>
 </dependency>
 
 <!-- 如果需要slf4j则配置以下jar包,如果直接使用log4j2做日志打印,则下方jar包不依赖 -->
@@ -367,6 +367,8 @@ logger.error("===========================error================================")
 
 
 八.关于异步日志，如果log4j2.xml中配置了异步日志输出，则必须引入disruptor包，否则项目启动时会报如下异常。
+   另外对disruptor包的版本号也要选择好,如果使用的太旧，而log4j2的包又太新的话，那么log4j2可能会引用disruptor较新的包的方法，就会导致找不到方法的异常，所以要注意jar包之间的版本号兼容。
+
 2018-04-24 16:27:19,086 RMI TCP Connection(3)-127.0.0.1 ERROR Unable to invoke factory method in class org.apache.logging.log4j.core.async.AsyncLoggerConfig for element AsyncLogger: java.lang.NoClassDefFoundError: com/lmax/disruptor/EventFactory java.lang.reflect.InvocationTargetException
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
