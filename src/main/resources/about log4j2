@@ -1,0 +1,175 @@
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.10.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+private static final Logger logger = LogManager.getLogger(DemoListener.class);
+
+logger.debug("===========================debug================================");
+logger.info("===========================info================================");
+logger.warn("===========================warn================================");
+logger.error("===========================error================================");
+logger.fatal("===========================fatal================================");
+
+严重: Unable to process Jar entry [module-info.class] from Jar [jar:file:/E:/workspaces-idea/GITHUB/glitter-spring-demo/target/spring-demo/WEB-INF/lib/log4j-api-2.10.0.jar!/] for annotations
+org.apache.tomcat.util.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 19
+	at org.apache.tomcat.util.bcel.classfile.Constant.readConstant(Constant.java:136)
+	at org.apache.tomcat.util.bcel.classfile.ConstantPool.<init>(ConstantPool.java:59)
+	at org.apache.tomcat.util.bcel.classfile.ClassParser.readConstantPool(ClassParser.java:208)
+	at org.apache.tomcat.util.bcel.classfile.ClassParser.parse(ClassParser.java:118)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsStream(ContextConfig.java:2058)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsJar(ContextConfig.java:1934)
+	at org.apache.catalina.startup.ContextConfig.processAnnotationsUrl(ContextConfig.java:1900)
+	at org.apache.catalina.startup.ContextConfig.processAnnotations(ContextConfig.java:1885)
+	at org.apache.catalina.startup.ContextConfig.webConfig(ContextConfig.java:1317)
+	at org.apache.catalina.startup.ContextConfig.configureStart(ContextConfig.java:876)
+	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:374)
+	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:117)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:90)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5355)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:901)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:877)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:632)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1763)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:618)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:565)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1468)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
+	at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console. Set system property 'log4j2.debug' to show Log4j2 internal initialization logging.
+四月 24, 2018 1:36:17 下午 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization started
+四月 24, 2018 1:36:17 下午 org.springframework.web.context.support.XmlWebApplicationContext prepareRefresh
+信息: Refreshing Root WebApplicationContext: startup date [Tue Apr 24 13:36:17 CST 2018]; root of context hierarchy
+四月 24, 2018 1:36:17 下午 org.springframework.beans.factory.xml.XmlBeanDefinitionReader loadBeanDefinitions
+信息: Loading XML bean definitions from class path resource [applicationContext.xml]
+四月 24, 2018 1:36:18 下午 org.springframework.web.context.ContextLoader initWebApplicationContext
+信息: Root WebApplicationContext: initialization completed in 282 ms
+
+13:36:25.565 [RMI TCP Connection(3)-127.0.0.1] ERROR com.glitter.demo.listener.DemoListener - ===========================error================================
+13:36:27.791 [RMI TCP Connection(3)-127.0.0.1] FATAL com.glitter.demo.listener.DemoListener - ===========================fatal================================
+
+[2018-04-24 01:36:29,362] Artifact glitter-spring-demo:war exploded: Artifact is deployed successfully
+[2018-04-24 01:36:29,362] Artifact glitter-spring-demo:war exploded: Deploy took 13,461 milliseconds
+
+
+
+1.如上，工程中只引入的log4j2的jar并没有引入任何配置文件，在测试的时候可以看到有ERROR输出和FATAL输出。
+  “ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.”
+
+2.输出logger时可以看到只有error和fatal级别的被输出来，是因为没有配置文件就使用默认的，默认级别是error，所以只有error和fatal输出来
+
+3.如果使用tomcat7.0.43及以下版本会输出如上一个错误信息，虽然并不影响项目正常启动。所以我们最好使用tomcat8及以上版本。
+
+
+=================================================================================分割线======================================================================================
+
+一.log2j 配置文件详解
+配置文件的格式和位置
+配置文件的格式：log2j配置文件可以是xml格式的，也可以是json格式的，
+配置文件的位置：log4j2默认会在classpath目录下寻找log4j2.xml、log4j.json、log4j.jsn等名称的文件，如果都没有找到，则会按默认配置输出，也就是输出到控制台，也可以对配置文件自定义位置（需要在web.xml中配置），一般放置在src/main/resources根目录下即可
+
+纯Java方式：
+public static void main(String[] args) throws IOException {
+    File file = new File("D:/log4j2.xml");
+    BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+    final ConfigurationSource source = new ConfigurationSource(in);
+    Configurator.initialize(null, source);
+    Logger logger = LogManager.getLogger("myLogger");
+}
+
+Web工程方式：
+<!-- 如果在classpath下即resource下放置了log4j2.xml,此处配置可以省略,如果此处配置了路径和名称会优先使用此处的 -->
+<context-param>
+    <param-name>log4jConfiguration</param-name>
+    <param-value>classpath:log4j2.xml</param-value>
+</context-param>
+<!-- 监听配置与不配置在日志使用和输出上并没有看出有什么区别,不配置并不影响代码中的日志按照xml中的配置进行打印,此处日后可在慢慢研究,本版先配置上 -->
+<listener>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+</listener>
+
+
+二.系统选择配置文件的优先级（从先到后）如下.
+
+(1).classpath下的名为 log4j2-test.json 或者 log4j2-test.jsn 的文件
+(2).classpath下的名为 log4j2-test.xml 的文件
+(3).classpath下名为 log4j2.json 或者 log4j2.jsn 的文件
+(4).classpath下名为 log4j2.xml 的文件
+
+我们一般默认使用 log4j2.xml 进行命名。如果本地要测试，可以把 log4j2-test.xml 放到 classpath，而正式环境使用 log4j2.xml，则在打包部署的时候不要打包 log4j2-test.xml 即可。
+
+
+三.配置.
+
+Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文参数。Log4j将会通过以下方式查找配置：
+
+1.如果有路径指定，那么它就会被搜索建立为servlet上下文资源。例如，如果log4jConfiguration包含了logging.xml，那么Log4j将会根据这个名字在web应用的root目录下查找文件。
+
+2.如果没有指定文件路径，log4j将会查找在WEB-INFO下以log4j2开头的文件。如果发现多个文件并且有一个是以应用名称命名的则使用该文件，否则，使用第一个查找到的。
+
+3.正常的搜索序列会再去查找classpath下和URLs定位到的配置文件。
+
+
+三.Servlet3.0以及以上
+
+  一个servlet3.0及以上的web应用程序是指任何<web-app>的version是3.0或者更高的。当然，应用程序必须可以兼容在web容器中运行。比如有些：Tomcat7.0及更高，Glassfish3.0及更高，JBoss7.0及更高或者WebLogic12c及更高，WebSphere8.0及更高。
+
+  Log4j 2‘只工作在’servlet3.0或者更高的web应用中。它能够在应用程序启动时自动启动在应用关闭时自动卸载。多亏有servlet3.0中增加的ServletContainerInitializer API，相关联的Filter和ServletContextListener类可以在web应用中启动的时候动态的进行注册。
+
+  重要注意事项！考虑到性能问题，容器会自动把一些既定的jars忽略初始化，tomcat版本号小于7.0.43的会自动忽略log4j*.jar，导致上述特性不能正常工作，这个问题在7.0.43及以上版本中已经修复了。如果使用之前版本，请更改catalina.properties文件，并从jarsToSkip属性中将log4j*.jar移除，在其它容器中如果遇到类似事情，也需要做同样的事情。
+
+  Log4j2 Web JAR文件是一个web片段用来配置在其它web片段前的顺序。它包含了一个容器自动发现并初始化的ServletContainerInitializer(Log4jServletContainerInitializer)，它将Log4jServletContextListener和Log4jServletFilter添加到ServletContext中。这些类初始化或者取消初始化Log4j的配置。
+
+  对于某些用户来说，自动启动Log4j是有问题的或者不受欢迎的。你可以使用isLog4jAutoInitializationDisabled参数来关闭自动启动。在web.xml中进行如下设置，即可自动取消启动。
+
+  <context-param>
+      <param-name>isLog4jAutoInitializationDisabled</param-name>
+      <param-value>true</param-value>
+  </context-param>
+
+  一旦你禁止自动初始化，你必须像Servlet2.5 web程序中那样进行初始化操作。而且必须要在其它的框架启动之前启动。
+
