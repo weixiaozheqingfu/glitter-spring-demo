@@ -104,7 +104,7 @@ ERROR StatusLogger No log4j2 configuration file found. Using default configurati
 
 3.如果使用tomcat7.0.43及以下版本会输出如上一个错误信息，虽然并不影响项目正常启动。所以我们最好使用tomcat8及以上版本。
 
-4.如果在此基础上，只要在resources目录下放置log4j2.xml配置文件,并且设定日志级别为DEBUG,即可得到如下打印日志，由于级别较低，log4j2的加载日志也会一并打印出来。如果设置级别为TRACE，则打印信息会更详细。
+4.如果在此基础上，只要在resources目录下放置log4j2.xml配置文件,并且设定日志级别为DEBUG,即可得到如下打印日志，<configuration status="TRACE" monitorInterval="1800">由于此处配置级别较低，log4j2的加载日志也会详细打印出来。
 
 E:\my_tomcat\apache-tomcat-8.5.29\bin\catalina.bat run
 [2018-04-24 03:35:34,490] Artifact glitter-spring-demo:war exploded: Server is not connected. Deploy is not available.
@@ -277,7 +277,7 @@ Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文�
 3.正常的搜索序列会再去查找classpath下和URLs定位到的配置文件。
 
 
-三.Servlet3.0以及以上
+四.Servlet3.0以及以上
 
   一个servlet3.0及以上的web应用程序是指任何<web-app>的version是3.0或者更高的。当然，应用程序必须可以兼容在web容器中运行。比如有些：Tomcat7.0及更高，Glassfish3.0及更高，JBoss7.0及更高或者WebLogic12c及更高，WebSphere8.0及更高。
 
@@ -296,3 +296,42 @@ Log4j允许配置文件指定在web.xml中，使用log4jConfiguartion上下文�
 
   一旦你禁止自动初始化，你必须像Servlet2.5 web程序中那样进行初始化操作。而且必须要在其它的框架启动之前启动。
 
+5.jar包依赖
+
+<!-- log4j2的核心jar包 -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.10.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+<!-- 如果不在web.xml中配置监听器,此jar包可省 -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-web</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+<!--需要使用到了log4j2的AsyncLogger，即做异步日志输出,则需要包含disruptor的jar包,如果全部是同步日志输出,则不需要此jar包 -->
+<dependency>
+    <groupId>com.lmax</groupId>
+    <artifactId>disruptor</artifactId>
+    <version>3.2.0</version>
+</dependency>
+
+<!-- 如果需要slf4j则配置以下jar包,如果直接使用log4j2做日志打印,则下方jar包不依赖 -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-slf4j-impl</artifactId>
+    <version>2.10.0</version>
+</dependency>
