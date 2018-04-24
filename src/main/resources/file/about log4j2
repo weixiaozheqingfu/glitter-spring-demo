@@ -441,3 +441,29 @@ Caused by: java.lang.ClassNotFoundException: com.lmax.disruptor.EventFactory
 	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1291)
 	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1119)
 	... 65 more
+
+
+九.说明，log4j2的加载始于项目启动时，jvm装载类文件时执行的静态代码块，该时机要远远早于spring框架的加载，所以log4j2的启动早于spring，与spring无关。
+
+
+十.格式说明，参考：https://blog.csdn.net/q176782/article/details/78288734
+ 例如：  pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+
+ 再如：  pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n"
+
+ %d{HH:mm:ss.SSS} 表示输出到毫秒的时间
+ %t 输出当前线程名称
+ %-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+ %logger 输出logger名称，因为Root Logger没有名称，所以没有输出
+ %msg 日志文本
+ %m 显示输出消息
+ %n 换行
+
+ 其他常用的占位符有：
+ %F 输出所在的类文件名，如Log4j2Test.java
+ %L 输出行号
+ %M 输出所在方法名
+ %l 输出语句所在的行数, 包括类名、方法名、文件名、行数
+ %p 显示该条日志的优先级,如INFO,ERROR等
+ %c 列出logger名字空间的全称，如果加上{<层数>}表示列出从最内层算起的指定层数的名字空间，假设当前logger名字空间是"a.b.c"，则输出a.b.c
+

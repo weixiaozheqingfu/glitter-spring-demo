@@ -1,30 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- status:值有 trace,debug,info,warn,error,fatal，用于控制log4j2日志框架本身的日志级别，如果将status设置为较低的级别就会看到很多关于log4j2本身的日志，如加载log4j2配置文件的路径等信息 -->
 <!-- monitorInterval:含义是每隔多少秒重新读取配置文件，可以不重启应用的情况下修改配置 -->
 <configuration status="DEBUG" monitorInterval="1800">
-<appenders>
-    <!-- 控制台打印 -->
-    <Console name="Console" target="SYSTEM_OUT">
-        <PatternLayout pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n" />
-    </Console>
-    <!-- 日志文件打印，当日志内容达到指定范围后，以某种定义规则打包日志文件 -->
-    <RollingFile name="RollingFile" fileName="/home/logs/${project.artifactId}.log" filePattern="/home/logs/${project.artifactId}.log.%i">
-        <PatternLayout pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n" />
-        <Policies>
-            <!-- 当日志大小达到50MB时，以上述filePattern定义的格式进行存档 -->
-            <SizeBasedTriggeringPolicy size="50MB" />
-        </Policies>
-        <!-- 存档数量不超过20 -->
-        <DefaultRolloverStrategy max="20" />
-    </RollingFile>
-</appenders>
-<loggers>
-    <AsyncLogger name="com.glitter.demo" additivity="false" level="INFO" includeLocation="false">
-        <appender-ref ref="Console" />
-        <appender-ref ref="RollingFile"/>
-    </AsyncLogger>
-    <root level="DEBUG">
-        <appender-ref ref="Console" />
-        <appender-ref ref="RollingFile" />
-    </root>
-</loggers>
+
+    <properties>
+        <property name="log_home">/home/logs</property>
+    </properties>
+
+    <appenders>
+        <!-- 控制台打印 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n" />
+        </Console>
+
+        <!-- 日志文件打印，当日志内容达到指定范围后，以某种定义规则打包日志文件 -->
+        <RollingFile name="RollingFile" fileName="${log_home}/${project.artifactId}.log" filePattern="${log_home}/${project.artifactId}.log.%i">
+            <PatternLayout pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n" />
+            <Policies>
+                <!-- 当日志大小达到50MB时，以上述filePattern定义的格式进行存档 -->
+                <SizeBasedTriggeringPolicy size="50MB" />
+            </Policies>
+            <!-- 存档数量不超过20 -->
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <AsyncLogger name="com.glitter.demo" additivity="false" level="INFO" includeLocation="false">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile"/>
+        </AsyncLogger>
+
+        <root level="DEBUG">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+        </root>
+    </loggers>
+
 </configuration>
