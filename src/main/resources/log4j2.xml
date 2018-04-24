@@ -18,10 +18,10 @@
     </RollingFile>
 </appenders>
 <loggers>
-    <!--<AsyncLogger name="com.glitter.demo" additivity="false" level="ERROR" includeLocation="false">-->
-        <!--<appender-ref ref="Console" />-->
-        <!--<appender-ref ref="RollingFile"/>-->
-    <!--</AsyncLogger>-->
+    <AsyncLogger name="com.glitter.demo" additivity="false" level="ERROR" includeLocation="false">
+        <appender-ref ref="Console" />
+        <appender-ref ref="RollingFile"/>
+    </AsyncLogger>
     <root level="DEBUG">
         <appender-ref ref="Console" />
         <appender-ref ref="RollingFile" />
