@@ -92,6 +92,15 @@
         </dependency>
         <!-- 配置日志相关jar包结束 -->
 
+        <!-- 配置mybaties相关jar包开始 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <!-- 配置mybaties相关jar包结束 -->
+
+
         <!-- 其他jar包-->
         <dependency>
             <groupId>junit</groupId>
