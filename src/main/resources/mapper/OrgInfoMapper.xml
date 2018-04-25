@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.glitter.demo.dao.OrgInfoMapper">
+  <resultMap id="BaseResultMap" type="com.glitter.demo.bean.OrgInfo">
+    <id column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="org_simple_name" jdbcType="VARCHAR" property="orgSimpleName" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="member_scale" jdbcType="VARCHAR" property="memberScale" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="contact_email" jdbcType="VARCHAR" property="contactEmail" />
+    <result column="lft" jdbcType="INTEGER" property="lft" />
+    <result column="rgt" jdbcType="INTEGER" property="rgt" />
+    <result column="attestation_status" jdbcType="TINYINT" property="attestationStatus" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="agent_manager_id" jdbcType="INTEGER" property="agentManagerId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="password_salt" jdbcType="VARCHAR" property="passwordSalt" />
+    <result column="link_phone" jdbcType="VARCHAR" property="linkPhone" />
+    <result column="link_email" jdbcType="VARCHAR" property="linkEmail" />
+    <result column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="allow_children" jdbcType="BIT" property="allowChildren" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    org_id, org_name, org_simple_name, industry, category, logo, member_scale, district, 
+    city, province, contact_phone, contact_email, lft, rgt, attestation_status, org_code, 
+    agent_manager_id, password, password_salt, link_phone, link_email, group_id, status, 
+    create_time, update_time, last_login_time, last_login_ip, remark, allow_children
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from glitter_org_info
+    where org_id = #{orgId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from glitter_org_info
+    where org_id = #{orgId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.glitter.demo.bean.OrgInfo">
+    insert into glitter_org_info (org_id, org_name, org_simple_name, 
+      industry, category, logo, 
+      member_scale, district, city, 
+      province, contact_phone, contact_email, 
+      lft, rgt, attestation_status, 
+      org_code, agent_manager_id, password, 
+      password_salt, link_phone, link_email, 
+      group_id, status, create_time, 
+      update_time, last_login_time, last_login_ip, 
+      remark, allow_children)
+    values (#{orgId,jdbcType=BIGINT}, #{orgName,jdbcType=VARCHAR}, #{orgSimpleName,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
+      #{memberScale,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{contactEmail,jdbcType=VARCHAR}, 
+      #{lft,jdbcType=INTEGER}, #{rgt,jdbcType=INTEGER}, #{attestationStatus,jdbcType=TINYINT}, 
+      #{orgCode,jdbcType=VARCHAR}, #{agentManagerId,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{passwordSalt,jdbcType=VARCHAR}, #{linkPhone,jdbcType=VARCHAR}, #{linkEmail,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{allowChildren,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.glitter.demo.bean.OrgInfo">
+    insert into glitter_org_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="orgSimpleName != null">
+        org_simple_name,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="memberScale != null">
+        member_scale,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="contactEmail != null">
+        contact_email,
+      </if>
+      <if test="lft != null">
+        lft,
+      </if>
+      <if test="rgt != null">
+        rgt,
+      </if>
+      <if test="attestationStatus != null">
+        attestation_status,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+      <if test="agentManagerId != null">
+        agent_manager_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="passwordSalt != null">
+        password_salt,
+      </if>
+      <if test="linkPhone != null">
+        link_phone,
+      </if>
+      <if test="linkEmail != null">
+        link_email,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="allowChildren != null">
+        allow_children,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSimpleName != null">
+        #{orgSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberScale != null">
+        #{memberScale,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null">
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lft != null">
+        #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null">
+        #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="attestationStatus != null">
+        #{attestationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentManagerId != null">
+        #{agentManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordSalt != null">
+        #{passwordSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkEmail != null">
+        #{linkEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="allowChildren != null">
+        #{allowChildren,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.glitter.demo.bean.OrgInfo">
+    update glitter_org_info
+    <set>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSimpleName != null">
+        org_simple_name = #{orgSimpleName,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberScale != null">
+        member_scale = #{memberScale,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null">
+        contact_email = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="lft != null">
+        lft = #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null">
+        rgt = #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="attestationStatus != null">
+        attestation_status = #{attestationStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orgCode != null">
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="agentManagerId != null">
+        agent_manager_id = #{agentManagerId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordSalt != null">
+        password_salt = #{passwordSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null">
+        link_phone = #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkEmail != null">
+        link_email = #{linkEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="allowChildren != null">
+        allow_children = #{allowChildren,jdbcType=BIT},
+      </if>
+    </set>
+    where org_id = #{orgId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.glitter.demo.bean.OrgInfo">
+    update glitter_org_info
+    set org_name = #{orgName,jdbcType=VARCHAR},
+      org_simple_name = #{orgSimpleName,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      member_scale = #{memberScale,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      contact_email = #{contactEmail,jdbcType=VARCHAR},
+      lft = #{lft,jdbcType=INTEGER},
+      rgt = #{rgt,jdbcType=INTEGER},
+      attestation_status = #{attestationStatus,jdbcType=TINYINT},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      agent_manager_id = #{agentManagerId,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      password_salt = #{passwordSalt,jdbcType=VARCHAR},
+      link_phone = #{linkPhone,jdbcType=VARCHAR},
+      link_email = #{linkEmail,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      allow_children = #{allowChildren,jdbcType=BIT}
+    where org_id = #{orgId,jdbcType=BIGINT}
+  </update>
+</mapper>

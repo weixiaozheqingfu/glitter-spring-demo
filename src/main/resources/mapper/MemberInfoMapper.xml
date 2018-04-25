@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.glitter.demo.dao.MemberInfoMapper">
+  <resultMap id="BaseResultMap" type="com.glitter.demo.bean.MemberInfo">
+    <id column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="member_password" jdbcType="CHAR" property="memberPassword" />
+    <result column="member_password_salt" jdbcType="CHAR" property="memberPasswordSalt" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="member_code" jdbcType="VARCHAR" property="memberCode" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ext_id" jdbcType="VARCHAR" property="extId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    member_id, org_id, member_password, member_password_salt, member_name, sex, member_code, 
+    email, mobile, photo, status, create_time, update_time, ext_id, remark, last_login_time, 
+    last_login_ip
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from glitter_member_info
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from glitter_member_info
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.glitter.demo.bean.MemberInfo">
+    insert into glitter_member_info (member_id, org_id, member_password, 
+      member_password_salt, member_name, sex, 
+      member_code, email, mobile, 
+      photo, status, create_time, 
+      update_time, ext_id, remark, 
+      last_login_time, last_login_ip)
+    values (#{memberId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, #{memberPassword,jdbcType=CHAR}, 
+      #{memberPasswordSalt,jdbcType=CHAR}, #{memberName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{memberCode,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{extId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.glitter.demo.bean.MemberInfo">
+    insert into glitter_member_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="memberPassword != null">
+        member_password,
+      </if>
+      <if test="memberPasswordSalt != null">
+        member_password_salt,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="memberCode != null">
+        member_code,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="extId != null">
+        ext_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="memberPassword != null">
+        #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="memberPasswordSalt != null">
+        #{memberPasswordSalt,jdbcType=CHAR},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="memberCode != null">
+        #{memberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extId != null">
+        #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.glitter.demo.bean.MemberInfo">
+    update glitter_member_info
+    <set>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="memberPassword != null">
+        member_password = #{memberPassword,jdbcType=CHAR},
+      </if>
+      <if test="memberPasswordSalt != null">
+        member_password_salt = #{memberPasswordSalt,jdbcType=CHAR},
+      </if>
+      <if test="memberName != null">
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="memberCode != null">
+        member_code = #{memberCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extId != null">
+        ext_id = #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.glitter.demo.bean.MemberInfo">
+    update glitter_member_info
+    set org_id = #{orgId,jdbcType=BIGINT},
+      member_password = #{memberPassword,jdbcType=CHAR},
+      member_password_salt = #{memberPasswordSalt,jdbcType=CHAR},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      member_code = #{memberCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ext_id = #{extId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR}
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+</mapper>

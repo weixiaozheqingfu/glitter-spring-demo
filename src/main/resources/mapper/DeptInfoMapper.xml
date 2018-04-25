@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.glitter.demo.dao.DeptInfoMapper">
+  <resultMap id="BaseResultMap" type="com.glitter.demo.bean.DeptInfo">
+    <id column="dept_id" jdbcType="BIGINT" property="deptId" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="dept_code" jdbcType="VARCHAR" property="deptCode" />
+    <result column="member_count" jdbcType="INTEGER" property="memberCount" />
+    <result column="lft" jdbcType="INTEGER" property="lft" />
+    <result column="rgt" jdbcType="INTEGER" property="rgt" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ext_id" jdbcType="VARCHAR" property="extId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dept_id, org_id, dept_name, dept_code, member_count, lft, rgt, status, create_time, 
+    update_time, ext_id, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from glitter_dept_info
+    where dept_id = #{deptId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from glitter_dept_info
+    where dept_id = #{deptId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.glitter.demo.bean.DeptInfo">
+    insert into glitter_dept_info (dept_id, org_id, dept_name, 
+      dept_code, member_count, lft, 
+      rgt, status, create_time, 
+      update_time, ext_id, remark
+      )
+    values (#{deptId,jdbcType=BIGINT}, #{orgId,jdbcType=BIGINT}, #{deptName,jdbcType=VARCHAR}, 
+      #{deptCode,jdbcType=VARCHAR}, #{memberCount,jdbcType=INTEGER}, #{lft,jdbcType=INTEGER}, 
+      #{rgt,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{extId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.glitter.demo.bean.DeptInfo">
+    insert into glitter_dept_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="deptCode != null">
+        dept_code,
+      </if>
+      <if test="memberCount != null">
+        member_count,
+      </if>
+      <if test="lft != null">
+        lft,
+      </if>
+      <if test="rgt != null">
+        rgt,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="extId != null">
+        ext_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deptId != null">
+        #{deptId,jdbcType=BIGINT},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberCount != null">
+        #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="lft != null">
+        #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null">
+        #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extId != null">
+        #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.glitter.demo.bean.DeptInfo">
+    update glitter_dept_info
+    <set>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptCode != null">
+        dept_code = #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="memberCount != null">
+        member_count = #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="lft != null">
+        lft = #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null">
+        rgt = #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extId != null">
+        ext_id = #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dept_id = #{deptId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.glitter.demo.bean.DeptInfo">
+    update glitter_dept_info
+    set org_id = #{orgId,jdbcType=BIGINT},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_code = #{deptCode,jdbcType=VARCHAR},
+      member_count = #{memberCount,jdbcType=INTEGER},
+      lft = #{lft,jdbcType=INTEGER},
+      rgt = #{rgt,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      ext_id = #{extId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where dept_id = #{deptId,jdbcType=BIGINT}
+  </update>
+</mapper>
