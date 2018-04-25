@@ -3,18 +3,52 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <settings>
+        <!-- 在映射database column名字和entity属性名时，自动将带下划线column名转化为常见的java驼峰形式属性名  -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 延迟加载entity的关联属性 -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!-- 启用或禁用 缓存 -->
+        <setting name="cacheEnabled" value="false" />
+        <!-- 设置超时时间，它决定驱动等待一个数据库响应的时间 -->
+        <setting name="defaultStatementTimeout" value="6000000" />
+        <!-- 指定 MyBatis 所用日志的具体实现，未指定时将自动查找 -->
+        <setting name="logImpl" value="LOG4J2" />
+    </settings>
+
+    <!-- 定义java类型的别名,这样在别处配置文件中使用 它们时,就不必再指明带package全名 -->
+    <typeAliases>
+        <typeAlias type="com.glitter.demo.bean.DeptInfo" alias="DeptInfo"/>
+        <typeAlias type="com.glitter.demo.bean.DeptMember" alias="DeptMember"/>
+        <typeAlias type="com.glitter.demo.bean.DictionaryInfo" alias="DictionaryInfo"/>
+        <typeAlias type="com.glitter.demo.bean.MemberInfo" alias="MemberInfo"/>
+        <typeAlias type="com.glitter.demo.bean.OrgInfo" alias="OrgInfo"/>
+        <typeAlias type="com.glitter.demo.bean.PositionGroup" alias="PositionGroup"/>
+        <typeAlias type="com.glitter.demo.bean.PositionInfo" alias="PositionInfo"/>
+        <typeAlias type="com.glitter.demo.bean.PositionMember" alias="PositionMember"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="driver" value="${jdbcDriver}"/>
+                <property name="url" value="${jdbcUrl}"/>
+                <property name="username" value="${jdbcUsername}"/>
+                <property name="password" value="${jdbcPassword}"/>
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
-        <mapper resource="org/mybatis/example/BlogMapper.xml"/>
+        <mapper resource="mapper/DeptInfoMapper.xml"/>
+        <mapper resource="mapper/DeptMemberMapper.xml"/>
+        <mapper resource="mapper/DictionaryInfoMapper.xml"/>
+        <mapper resource="mapper/MemberInfoMapper.xml"/>
+        <mapper resource="mapper/OrgInfoMapper.xml"/>
+        <mapper resource="mapper/PositionGroupMapper.xml"/>
+        <mapper resource="mapper/PositionInfoMapper.xml"/>
+        <mapper resource="mapper/PositionMemberMapper.xml"/>
     </mappers>
 </configuration>

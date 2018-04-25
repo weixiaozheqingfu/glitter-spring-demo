@@ -3,6 +3,7 @@ package com.glitter.demo.bean;
 import java.util.Date;
 
 public class DeptInfo {
+
     private Long deptId;
 
     private Long orgId;
@@ -26,6 +27,7 @@ public class DeptInfo {
     private String extId;
 
     private String remark;
+
 
     public Long getDeptId() {
         return deptId;

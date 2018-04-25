@@ -125,6 +125,10 @@
             </activation>
             <properties>
                 <projectName>${project.artifactId}</projectName>
+                <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+                <jdbcUrl>jdbc:mysql://127.0.0.1:3306/glitter_demo?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;rewriteBatchedStatements=true</jdbcUrl>
+                <jdbcUsername>root</jdbcUsername>
+                <jdbcPassword>root</jdbcPassword>
             </properties>
         </profile>
     </profiles>
