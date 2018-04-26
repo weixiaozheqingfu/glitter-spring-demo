@@ -6,6 +6,8 @@ import com.glitter.demo.dao.impl.PositionGroupMapperImpl;
 import com.glitter.demo.mybatis.MySqlSession;
 import com.glitter.demo.service.IPositionGroupService;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.transaction.Transaction;
+import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 
 public class PositionGroupServiceImpl implements IPositionGroupService{
     SqlSession session = MySqlSession.newSqlSession();
@@ -22,6 +24,10 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      */
     @Override
     public int create(PositionGroup record) {
+        // 1.删除用户成功
+        Transaction transaction = new JdbcTransaction(session.getConnection());
+//        transaction.commit();
+        // 2.新增用户失败
         return 0;
     }
 

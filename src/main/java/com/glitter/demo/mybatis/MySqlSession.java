@@ -26,9 +26,6 @@ public class MySqlSession {
 
     public static org.apache.ibatis.session.SqlSession newSqlSession() {
         org.apache.ibatis.session.SqlSession session = getSqlSessionFactory().openSession();
-
-//        Transaction transaction = new JdbcTransaction(session.getConnection());
-//        transaction.commit();
         return session;
     }
 }
