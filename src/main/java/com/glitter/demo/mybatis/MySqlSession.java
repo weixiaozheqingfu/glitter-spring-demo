@@ -1,6 +1,7 @@
 package com.glitter.demo.mybatis;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -25,7 +26,7 @@ public class MySqlSession {
     }
 
     public static org.apache.ibatis.session.SqlSession newSqlSession() {
-        org.apache.ibatis.session.SqlSession session = getSqlSessionFactory().openSession();
+        SqlSession session = getSqlSessionFactory().openSession();
         return session;
     }
 }

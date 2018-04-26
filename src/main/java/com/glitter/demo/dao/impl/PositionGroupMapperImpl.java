@@ -2,14 +2,16 @@ package com.glitter.demo.dao.impl;
 
 import com.glitter.demo.bean.PositionGroup;
 import com.glitter.demo.dao.PositionGroupMapper;
-import com.glitter.demo.mybatis.MySqlSession;
 import org.apache.ibatis.session.SqlSession;
 
 public class PositionGroupMapperImpl implements PositionGroupMapper{
 
     private static final String namespace = "com.glitter.demo.dao.PositionGroupMapper";
 
-    SqlSession session = MySqlSession.newSqlSession();
+    SqlSession session;
+    public PositionGroupMapperImpl(SqlSession session){
+        this.session = session;
+    }
 
     @Override
     public int deleteByPrimaryKey(Long positionGroupId) {

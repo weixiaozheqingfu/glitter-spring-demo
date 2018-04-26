@@ -10,12 +10,12 @@ import org.apache.ibatis.transaction.Transaction;
 import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 
 public class PositionGroupServiceImpl implements IPositionGroupService{
-    SqlSession session = MySqlSession.newSqlSession();
+    SqlSession session;
 
     // 自己的实现,里面直接通过session对象和方法名称字符串操作xml中对应的sql方法
-    PositionGroupMapper PositionGroupMapper1 = new PositionGroupMapperImpl();
+    PositionGroupMapper positionGroupMapper1;
     // 直接动态new一个PositionGroupMapper接口对应的xml实现类给接口
-    PositionGroupMapper PositionGroupMapper2 = session.getMapper(PositionGroupMapper.class);
+    PositionGroupMapper positionGroupMapper2;
 
     /**
      * 测试纯mybatis下事务的用法
@@ -39,7 +39,9 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
     @Override
     public PositionGroup findById(Long positionGroupId) {
         try {
-            PositionGroup result1 = PositionGroupMapper1.selectByPrimaryKey(positionGroupId);
+            session = MySqlSession.newSqlSession();
+            positionGroupMapper1 = new PositionGroupMapperImpl(session);
+            PositionGroup result1 = positionGroupMapper1.selectByPrimaryKey(positionGroupId);
             return result1;
         } finally {
             session.close();
@@ -54,7 +56,9 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
     @Override
     public PositionGroup findById2(Long positionGroupId) {
         try {
-            PositionGroup result2 = PositionGroupMapper2.selectByPrimaryKey(positionGroupId);
+            session = MySqlSession.newSqlSession();
+            positionGroupMapper2 = session.getMapper(PositionGroupMapper.class);
+            PositionGroup result2 = positionGroupMapper2.selectByPrimaryKey(positionGroupId);
             return result2;
         } finally {
             session.close();
