@@ -6,11 +6,8 @@ import com.glitter.demo.dao.impl.PositionGroupMapperImpl;
 import com.glitter.demo.mybatis.MySqlSession;
 import com.glitter.demo.service.IPositionGroupService;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.transaction.Transaction;
-import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 
 public class PositionGroupServiceImpl implements IPositionGroupService{
-    SqlSession session;
 
     // 自己的实现,里面直接通过session对象和方法名称字符串操作xml中对应的sql方法
     PositionGroupMapper positionGroupMapper1;
@@ -25,7 +22,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
     @Override
     public int create(PositionGroup record) {
         // 1.删除用户成功
-        Transaction transaction = new JdbcTransaction(session.getConnection());
+//        Transaction transaction = new JdbcTransaction(session.getConnection());
 //        transaction.commit();
         // 2.新增用户失败
         return 0;
@@ -38,6 +35,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      */
     @Override
     public PositionGroup findById(Long positionGroupId) {
+        SqlSession session = null;
         try {
             session = MySqlSession.newSqlSession();
             positionGroupMapper1 = new PositionGroupMapperImpl(session);
@@ -55,6 +53,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      */
     @Override
     public PositionGroup findById2(Long positionGroupId) {
+        SqlSession session = null;
         try {
             session = MySqlSession.newSqlSession();
             positionGroupMapper2 = session.getMapper(PositionGroupMapper.class);
