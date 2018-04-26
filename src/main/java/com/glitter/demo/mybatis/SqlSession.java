@@ -18,7 +18,6 @@ public class SqlSession {
                 InputStream inputStream = Resources.getResourceAsStream(mybatisResource);
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             }
-
             return sqlSessionFactory;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -27,6 +26,9 @@ public class SqlSession {
 
     public static org.apache.ibatis.session.SqlSession newSqlSession() {
         org.apache.ibatis.session.SqlSession session = getSqlSessionFactory().openSession();
+
+//        Transaction transaction = new JdbcTransaction(session.getConnection());
+//        transaction.commit();
         return session;
     }
 }

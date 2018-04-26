@@ -96,9 +96,17 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.0</version>
+            <version>3.4.2</version>
         </dependency>
         <!-- 配置mybaties相关jar包结束 -->
+
+        <!-- 配置mysql驱动包开始 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+        <!-- 配置mysql驱动包结束 -->
 
 
         <!-- 其他jar包-->
@@ -126,7 +134,7 @@
             <properties>
                 <projectName>${project.artifactId}</projectName>
                 <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
-                <jdbcUrl>jdbc:mysql://127.0.0.1:3306/glitter_demo?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;rewriteBatchedStatements=true</jdbcUrl>
+                <jdbcUrl>jdbc:mysql://127.0.0.1:3306/glitter_demo?useUnicode=true</jdbcUrl>
                 <jdbcUsername>root</jdbcUsername>
                 <jdbcPassword>root</jdbcPassword>
             </properties>

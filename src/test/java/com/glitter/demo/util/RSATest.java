@@ -1,6 +1,7 @@
 package com.glitter.demo.util;
 
 
+import com.glitter.demo.dao2.PositionGroupDao;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,5 +14,8 @@ public class RSATest {
     public void testA(){
         System.out.println("Hello World");
         Assert.assertEquals("1","1");
+
+        PositionGroupDao positionGroupDao = new PositionGroupDao();
+        positionGroupDao.selectByPrimaryKey(25L);
     }
 }
