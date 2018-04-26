@@ -12,11 +12,11 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by Administrator on 2018/4/17.
  */
-public class RSATest {
-    private static final Logger logger = LoggerFactory.getLogger(RSATest.class);
+public class PositionGroupServiceTest {
+    private static final Logger logger = LoggerFactory.getLogger(PositionGroupServiceTest.class);
 
     @Test
-    public void testA(){
+    public void testFindById(){
         System.out.println("Hello World");
         Assert.assertEquals("1","1");
 
