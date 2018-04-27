@@ -54,7 +54,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      * // 更可怕的是事务问题，事务开启和事务提交及事务回滚，都是基于connection对象的，也就是基于mybatis封装的session对象的，如果session在一个方法执行过程中被重新赋值，
      * // 那么当这个方法执行事务开启和事务提交或者事务回滚使不是基于同一个session，事务就会有问题。
      * // 但是spring的aop又是如何做到这一切呢，看上去，他也是基于单例的，这个问题值得后续继续研究。有更多的问题需要研究，暂时先搁置此问题，不能一叶障目，就停滞不前，那样将会永远裹足不前。
-     * // 知道哪里会，哪里不会也是一种能力，暂时放一放也是一种智慧。
+     * // 知道哪里会，哪里不会也是一种能力，暂时放一放也是一种智慧和勇气，人有时候不能太有完美和一次求成的执念，知足知不足，日后补足。
      * @param positionGroupId
      * @return
      */
