@@ -1,6 +1,7 @@
 package com.glitter.demo.service.impl;
 
 import com.glitter.demo.bean.PositionGroup;
+import com.glitter.demo.context.SqlSessionThreadLocal;
 import com.glitter.demo.dao.PositionGroupMapper;
 import com.glitter.demo.dao.impl.PositionGroupMapperImpl;
 import com.glitter.demo.mybatis.MySqlSession;
@@ -10,7 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 public class PositionGroupServiceImpl implements IPositionGroupService{
 
     // 自己的实现,里面直接通过session对象和方法名称字符串操作xml中对应的sql方法
-    PositionGroupMapper positionGroupMapper1;
+    PositionGroupMapper positionGroupMapper1 = new PositionGroupMapperImpl();
     // 直接动态new一个PositionGroupMapper接口对应的xml实现类给接口
     PositionGroupMapper positionGroupMapper2;
 
@@ -35,14 +36,12 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      */
     @Override
     public PositionGroup findById(Long positionGroupId) {
-        SqlSession session = null;
         try {
-            session = MySqlSession.newSqlSession();
-            positionGroupMapper1 = new PositionGroupMapperImpl(session);
+            SqlSessionThreadLocal.setSqlSession(MySqlSession.newSqlSession());
             PositionGroup result1 = positionGroupMapper1.selectByPrimaryKey(positionGroupId);
             return result1;
         } finally {
-            session.close();
+            SqlSessionThreadLocal.getSqlSession().close();
         }
     }
 
@@ -55,6 +54,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      * // 那么当这个方法执行事务开启和事务提交或者事务回滚使不是基于同一个session，事务就会有问题。
      * // 但是spring的aop又是如何做到这一切呢，看上去，他也是基于单例的，这个问题值得后续继续研究。有更多的问题需要研究，暂时先搁置此问题，不能一叶障目，就停滞不前，那样将会永远裹足不前。
      * // 知道哪里会，哪里不会也是一种能力，暂时放一放也是一种智慧和勇气，人有时候不能太有完美和一次求成的执念，知足知不足，日后补足。
+     * // Spring对这块的处理会有很多增强和保证，推荐有时间多看看书，看看spring是如何处理的。
      * @param positionGroupId
      * @return
      */
