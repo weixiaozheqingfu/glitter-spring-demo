@@ -8,7 +8,6 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.sql.SQLException;
 
 /**
  * @author limengjun
