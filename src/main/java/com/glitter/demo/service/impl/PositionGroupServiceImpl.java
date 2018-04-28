@@ -7,6 +7,10 @@ import com.glitter.demo.dao.impl.PositionGroupMapperImpl;
 import com.glitter.demo.mybatis.MySqlSession;
 import com.glitter.demo.service.IPositionGroupService;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.transaction.Transaction;
+import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
+
+import java.sql.SQLException;
 
 public class PositionGroupServiceImpl implements IPositionGroupService{
 
@@ -18,16 +22,40 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
 
     /**
      * 测试纯mybatis下事务的用法
+     *
+     * positionGroupMapper1是Spring注入的一个单例类
+     *
+     * 结合动态代理和ThreadLocal，我们就可以很容易模拟出spring的aop事务了。
+     * 当然此处的代码没做动态代理。
      * @param record
      * @return
      */
     @Override
-    public int create(PositionGroup record) {
-        // 1.删除用户成功
-//        Transaction transaction = new JdbcTransaction(session.getConnection());
-//        transaction.commit();
-        // 2.新增用户失败
-        return 0;
+    public void create(PositionGroup record){
+        Transaction transaction = null;
+        try{
+            // 获取session开启事务部分可以放在动态代理invoke方法在调用目标方法即create方法之前,spring其实就是这样干的
+            SqlSessionThreadLocal.setSqlSession(MySqlSession.newSqlSession());
+            transaction = new JdbcTransaction(SqlSessionThreadLocal.getSqlSession().getConnection());
+            transaction.getConnection().setAutoCommit(false);
+            // 模拟此处成功
+            positionGroupMapper1.deleteByPrimaryKey(24L);
+
+            // 模拟此处失败
+            positionGroupMapper1.insertSelective(record);
+
+            // 事务提交或者回滚，部分可以放在动态代理invoke方法在invoke方法在调用目标方法时,catch中是回滚，没有异常就提交
+            transaction.commit();
+        } catch (Exception e){
+            try {
+                transaction.rollback();
+            } catch (SQLException e1) {
+
+            }
+        } finally {
+            SqlSessionThreadLocal.getSqlSession().close();
+        }
+
     }
 
     /**
@@ -46,16 +74,54 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * 方式二:通过接口new对应的mapper.xml实现类的方式
-     * // TODO 这里留一个问题，即如果该实现类是单例的情况下，高并发时，有两个用户同时调用该实例的两个不同的方法，如何保证session不串。
-     * // 即第一个方法刚获取到一个session1，然后基于session1得到了mapper对象，但是方法没往下继续走，此时线程切换到另外一个方法，session又重新获取成了session2，那么
-     * // 此时线程切换到第一个方法，那么第一个方法是不是就变成使用session2了，此时方法一执行session.close的时候，会不会将方法二中的session也关闭了，因为是同一个对象啊。
-     * // 更可怕的是事务问题，事务开启和事务提交及事务回滚，都是基于connection对象的，也就是基于mybatis封装的session对象的，如果session在一个方法执行过程中被重新赋值，
-     * // 那么当这个方法执行事务开启和事务提交或者事务回滚使不是基于同一个session，事务就会有问题。
-     * // 但是spring的aop又是如何做到这一切呢，看上去，他也是基于单例的，这个问题值得后续继续研究。有更多的问题需要研究，暂时先搁置此问题，不能一叶障目，就停滞不前，那样将会永远裹足不前。
+     * // 使用这种方式有一个问题，我们想模拟spring把positionGroupMapper2认为是单例的,
+     * // 这样的话，方法二中此处的positionGroupMapper2是全局单例且在不同方法中会与session相串,最终导致事务紊乱。
+     *
+     * // 但是spring的aop事务又是如何做到这一切呢，看上去，他也是基于单例的，这个问题值得后续继续研究。
+     * // 有更多的问题需要研究，暂时先搁置此问题，不能一叶障目，就不见泰山，就停滞不前，那样将会永远裹足不前。
      * // 知道哪里会，哪里不会也是一种能力，暂时放一放也是一种智慧和勇气，人有时候不能太有完美和一次求成的执念，知足知不足，日后补足。
-     * // Spring对这块的处理会有很多增强和保证，推荐有时间多看看书，看看spring是如何处理的。
+     *
      * @param positionGroupId
      * @return
      */
