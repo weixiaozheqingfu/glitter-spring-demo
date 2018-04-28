@@ -11,6 +11,8 @@ public interface IPositionGroupService {
 
     void create(PositionGroup record) throws SQLException;
 
+    void createProxy(PositionGroup record) throws SQLException;
+
     PositionGroup findById(Long positionGroupId);
 
     PositionGroup findById2(Long positionGroupId);

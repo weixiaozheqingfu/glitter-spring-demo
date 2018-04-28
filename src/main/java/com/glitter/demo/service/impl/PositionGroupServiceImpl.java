@@ -55,7 +55,19 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
         } finally {
             SqlSessionThreadLocal.getSqlSession().close();
         }
+    }
 
+    /**
+     * 动态代理模拟spring的aop事务原理,spring的aop就是基于动态代理的,事务当然也是
+     * @param record
+     */
+    @Override
+    public void createProxy(PositionGroup record) {
+        Transaction transaction = null;
+        // 模拟此处成功
+        positionGroupMapper1.deleteByPrimaryKey(25L);
+        // 模拟此处失败
+        positionGroupMapper1.insertSelective(record);
     }
 
     /**
