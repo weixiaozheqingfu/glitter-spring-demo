@@ -15,6 +15,7 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
     // 直接动态new一个PositionGroupMapper接口对应的xml实现类给接口
     PositionGroupMapper positionGroupMapper2;
 
+
     /**
      * 测试纯mybatis下事务的用法
      * @param record
