@@ -63,12 +63,47 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
      */
     @Override
     public void createProxy(PositionGroup record) {
-        Transaction transaction = null;
         // 模拟此处成功
         positionGroupMapper1.deleteByPrimaryKey(25L);
         // 模拟此处失败
         positionGroupMapper1.insertSelective(record);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 方式一:通过直接调用的方式
@@ -85,45 +120,6 @@ public class PositionGroupServiceImpl implements IPositionGroupService{
             SqlSessionThreadLocal.getSqlSession().close();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * 方式二:通过接口new对应的mapper.xml实现类的方式
