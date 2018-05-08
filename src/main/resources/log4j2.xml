@@ -13,7 +13,7 @@
         </Console>
 
         <!-- 日志文件打印，当日志内容达到指定范围后，以某种定义规则打包日志文件 -->
-        <RollingFile name="RollingFile" fileName="${log_home}/${project.artifactId}.log" filePattern="${log_home}/${project.artifactId}.log.%i">
+        <RollingFile name="RollingFile" fileName="${log_home}/${project.artifactId}.log" filePattern="${log_home}/${project.artifactId}-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="[${project.artifactId}] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p => %c - %m%n" />
             <Policies>
                 <!-- 当日志大小达到50MB时，以上述filePattern定义的格式进行存档 -->
