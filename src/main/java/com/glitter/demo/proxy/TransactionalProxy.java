@@ -38,7 +38,8 @@ public class TransactionalProxy implements InvocationHandler {
             transaction.rollback();
             throw e;
         }finally {
-            SqlSessionThreadLocal.getSqlSession().close();
+            // 这行代码不能放开,否则报错,不知道什么原因,给人的感觉是会先执行这行代码,连接被提前关闭了
+//            SqlSessionThreadLocal.getSqlSession().getConnection().close();
         }
         return returnValue;
     }
