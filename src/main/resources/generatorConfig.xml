@@ -35,7 +35,7 @@
         </javaTypeResolver>
           
         <!-- 生成实体类地址 -->    
-        <javaModelGenerator targetPackage="com.glitter.demo.bean" targetProject="src" >
+        <javaModelGenerator targetPackage="com.syswin.systoon.taip.proxy.bean" targetProject="src" >
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->  
             <property name="enableSubPackages" value="false"/>  
             <!-- 是否针对string类型的字段在set的时候进行trim调用 -->  
@@ -43,98 +43,28 @@
         </javaModelGenerator>
           
         <!-- 生成mapxml文件 -->  
-        <sqlMapGenerator targetPackage="com.glitter.demo.mapper" targetProject="src" >
+        <sqlMapGenerator targetPackage="com.syswin.systoon.taip.proxy.mapper" targetProject="src" >
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->  
             <property name="enableSubPackages" value="false" />  
         </sqlMapGenerator>  
           
         <!-- 生成mapxml对应client，也就是接口dao -->      
-        <javaClientGenerator targetPackage="com.glitter.demo.dao" targetProject="src" type="XMLMAPPER" >
+        <javaClientGenerator targetPackage="com.syswin.systoon.taip.proxy.dao" targetProject="src" type="XMLMAPPER" >
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->  
             <property name="enableSubPackages" value="false" />  
         </javaClientGenerator>  
           
         <!-- 配置表信息 -->      
 
-        <table schema="glitter_demo" tableName="glitter_dept_info"
-            domainObjectName="DeptInfo" enableCountByExample="false"
+        <table schema="org_taip_proxy" tableName="organization_taip_proxy_info"
+            domainObjectName="TaipProxyInfo" enableCountByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"  
             enableUpdateByExample="false">
             <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->  
             <!-- 忽略列，不生成bean 字段 -->  
-            <ignoreColumn column="FRED" />  
+            <ignoreColumn column="FRED" />
             <!-- 指定列的java数据类型 -->  
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  
-        </table>
-        <table schema="glitter_demo" tableName="glitter_dept_member"
-               domainObjectName="DeptMember" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_dictionary_info"
-               domainObjectName="DictionaryInfo" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_member_info"
-               domainObjectName="MemberInfo" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_org_info"
-               domainObjectName="OrgInfo" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_position_member"
-               domainObjectName="PositionMember" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_position_group"
-               domainObjectName="PositionGroup" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
-        </table>
-        <table schema="glitter_demo" tableName="glitter_position_info"
-               domainObjectName="PositionInfo" enableCountByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-            <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
-            <!-- 忽略列，不生成bean 字段 -->
-            <ignoreColumn column="FRED" />
-            <!-- 指定列的java数据类型 -->
-            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
         </table>
 
     </context>
