@@ -450,7 +450,7 @@ Caused by: java.lang.ClassNotFoundException: com.lmax.disruptor.EventFactory
 	... 65 more
 
 
-九.说明，log4j2的加载始于项目启动时，jvm装载类文件时执行的静态代码块，该时机要远远早于spring框架的加载，所以log4j2的启动早于spring，与spring无关。
+九.说明，log4j2的加载始于项目启动时，jvm装载类文件时执行的静态代码块，该时机要远远早于spring框架的加载，所以log4j2的启动早于spring，与spring无关，与SPI机制有关。
 
 
 十.格式说明，参考：https://blog.csdn.net/q176782/article/details/78288734
